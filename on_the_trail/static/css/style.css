@@ -1,0 +1,32 @@
+body, html{
+    height: 100%;
+}
+
+#main {
+    background: url('../images/background.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.jumbotron{
+    width: 50%;
+    height: 20%;
+    background: transparent;
+    padding: 20px;
+    margin: 50px auto 50px auto;
+}
+
+.jumbotron h1, h4, form{
+    margin: 0 auto;
+}
+
+#search {
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+}
+
