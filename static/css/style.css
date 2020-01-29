@@ -1,0 +1,68 @@
+body, html{
+    height: 100%;
+}
+
+body{
+    background: url('../images/background.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding:50px;
+}
+
+.jumbotron{
+    width: 50%;
+    height: 20%;
+    color: rgb(226, 205, 161);
+    background: transparent;
+    padding: 20px;
+
+}
+#front_jumbo{
+    margin: 180px auto 50px auto;
+}
+.jumbotron h1, h4, form{
+    margin: 0 auto;
+}
+
+#search {
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+}
+
+.col-sm-4{
+    color: rgb(207, 187, 148);
+}
+
+#container{
+    padding: 0px;
+}
+
+.card-deck .card{
+    box-shadow: 2px 5px 10px rgb(1, 78, 40);
+    min-width: 27%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    margin-bottom: 20px;
+}
+
+.card-img-top{
+    display: inline-block;
+    height: 200px;
+}
+
+.card-title{
+    font-weight: bold;
+}
+
+.card-text{
+    font-style: italic;
+}
+
+.card-columns {
+    column-count: 3;
+    }

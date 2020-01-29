@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trails</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-sm bg-light navbar-light" style="margin: 10px;">
+            <ul class="navbar-nav">
+                {% if not request.session.user_id %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/login_registration">Log in and Registration</a>
+                </li>
+                {%endif%}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About us</a>
+                </li>
+                {% if request.session.user_id %}
+                <li><p style="margin: 8px 10px 8px 20px;">Hello {{request.session.first_name}}</p></li>
+                <li><a href="/login_registration/user/logout" style="margin: 8px 10px 8px 20px; color: inherit;">Logout</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        <div class="card-deck">
+            {% for trail in cont %}
+            <div class="card">
+                {% if trail.imgSmall %}
+                <img src="{{trail.imgSmall}}" class="card-img-top" alt="no image">
+                {% else %}
+                <img src="{% static 'images/default.jpg' %}" class="card-img-top">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{trail.name}}</h5>
+                    <h6 class="card-title">{{trail.location}}</h6>
+                    <p class="card-text">{{trail.summary}}</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Trail Difficulty: {{trail.difficulty}}</small><br>
+                    <small class="text-muted">Trail Rating: {{trail.stars}} out of 5</small>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+
+</html>
