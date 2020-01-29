@@ -13,7 +13,7 @@ body{
 .jumbotron{
     width: 50%;
     height: 20%;
-    color: wheat;
+    color: rgb(226, 205, 161);
     background: transparent;
     padding: 20px;
 
@@ -34,6 +34,6 @@ body{
 }
 
 .col-sm-4{
-    color: wheat;
+    color: rgb(207, 187, 148);
 }
 

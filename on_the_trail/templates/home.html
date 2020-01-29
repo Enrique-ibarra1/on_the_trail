@@ -18,14 +18,17 @@
     <div id="main" class="front-page">
         <nav class="navbar navbar-expand-sm bg-light navbar-light">
             <ul class="navbar-nav">
+                {% if not request.session.user_id %}
                 <li class="nav-item active">
                     <a class="nav-link" href="/login_registration">Log in and Registration</a>
                 </li>
+                {%endif%}
                 <li class="nav-item">
                     <a class="nav-link" href="#">About us</a>
                 </li>
                 {% if request.session.user_id %}
-                <li><p>Hello {{request.session.first_name}}</p></li>
+                <li><p style="margin: 8px 10px 8px 20px;">Hello {{request.session.first_name}}</p></li>
+                <li><a href="/login_registration/user/logout" style="margin: 8px 10px 8px 20px; color: inherit;">Logout</a></li>
                 {% endif %}
             </ul>
         </nav>
