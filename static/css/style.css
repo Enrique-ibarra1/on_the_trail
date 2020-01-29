@@ -2,12 +2,12 @@ body, html{
     height: 100%;
 }
 
-#main {
+body{
     background: url('../images/background.jpg');
-    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    padding:50px;
 }
 
 .jumbotron{
@@ -16,9 +16,11 @@ body, html{
     color: wheat;
     background: transparent;
     padding: 20px;
+
+}
+#front_jumbo{
     margin: 180px auto 50px auto;
 }
-
 .jumbotron h1, h4, form{
     margin: 0 auto;
 }
@@ -29,5 +31,9 @@ body, html{
     margin-top: 8px;
     margin-right: 16px;
     font-size: 17px;
+}
+
+.col-sm-4{
+    color: wheat;
 }
 

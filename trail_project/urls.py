@@ -18,4 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', include('on_the_trail.urls')),
+    path('login_registration/', include('login_app.urls'))
 ]
