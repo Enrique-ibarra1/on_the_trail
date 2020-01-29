@@ -8,7 +8,7 @@ def homepage(request):
     return render(request, 'home.html')
 
 def search_trail(request):
-    geolocator = Nominatim()
+    geolocator = Nominatim(timeout=100)
     location = geolocator.geocode(request.POST['location'])
     if location is None:
         messages.error(request, "Enter a valid location")
