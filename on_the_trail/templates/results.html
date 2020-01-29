@@ -6,30 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trails</title>
-    {%load static%}
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    {%load static%}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
-    <div id="main" class="front-page">
-        <div class="container">
+    <div class="container">
+        <div class="card-deck">
             {% for trail in cont %}
+
             <div class="card">
+                {% if trail.imgSmall %}
+
+                <img src="{{trail.imgSmall}}" class="card-img-top" alt="no image">
+                {% else %}
+
+                <img src="{% static 'images/default.jpg' %}" class="card-img-top">
+                {% endif %}
+
+
                 <div class="card-body">
-                    <h4>{{trail.name}}</h4>
-                    <img src="{{trail.imgSmall}}">
-                    <form>
-                        <button type="submit" class="btn btn-outline-dark">Favorite</button>
-                    </form>  
+                    <h5 class="card-title">{{trail.name}}</h5>
+                    <h6 class="card-title">{{trail.location}}</h6>
+                    <p class="card-text">{{trail.summary}}</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Trail Difficulty: {{trail.difficulty}}</small><br>
+                    <small class="text-muted">Trail Rating: {{trail.stars}} out of 5</small>
                 </div>
             </div>
-                
-            {%endfor%}
+            {% endfor %}
         </div>
-
     </div>
-
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>

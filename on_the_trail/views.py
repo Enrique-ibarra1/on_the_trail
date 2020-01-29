@@ -18,7 +18,7 @@ def search_trail(request):
         longitude = location.longitude
         token = "200676508-c12a355611c571567c0ce3a8469cbf2d"
         # url = f"https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key={token}"
-        url = f"https://www.hikingproject.com/data/get-trails?lat={latitude}&lon={longitude}&maxDistance=20&key={token}"
+        url = f"https://www.hikingproject.com/data/get-trails?lat={latitude}&lon={longitude}&maxDistance=20&maxResults=10&key={token}"
         req = urllib.request.Request(url)
 
         ##parsing response

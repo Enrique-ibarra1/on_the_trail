@@ -1,13 +1,14 @@
 body, html{
     height: 100%;
+    margin: 20px;
 }
 
-#main {
+body {
     background: url('../images/background.jpg');
-    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 .jumbotron{
@@ -31,3 +32,36 @@ body, html{
     font-size: 17px;
 }
 
+#container{
+    padding: 0px;
+}
+
+.card-deck{
+    /* width: 70%; */
+    margin: 0px auto;
+}
+
+.card-deck .card{
+    box-shadow: 2px 5px 10px rgb(173, 173, 173);
+    min-width: 27%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    margin-bottom: 20px;
+}
+
+.card-img-top{
+    display: inline-block;
+    height: 200px;
+}
+
+.card-title{
+    font-weight: bold;
+}
+
+.card-text{
+    font-style: italic;
+}
+
+.card-columns {
+    column-count: 3;
+    }
