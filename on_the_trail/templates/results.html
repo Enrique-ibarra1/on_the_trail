@@ -15,7 +15,16 @@
     <div id="main" class="front-page">
         <div class="container">
             {% for trail in cont %}
-                <p>{{trail.name}}</p>
+            <div class="card">
+                <div class="card-body">
+                    <h4>{{trail.name}}</h4>
+                    <img src="{{trail.imgSmall}}">
+                    <form>
+                        <button type="submit" class="btn btn-outline-dark">Favorite</button>
+                    </form>  
+                </div>
+            </div>
+                
             {%endfor%}
         </div>
 

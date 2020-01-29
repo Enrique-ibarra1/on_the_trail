@@ -29,7 +29,17 @@
                 </li>
             </ul>
         </nav>
+
+
+
         <div class="jumbotron text-center">
+            {% if messages %}
+                <ul class="messages">    
+                    {% for message in messages %}    
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                    {% endfor %}
+                </ul>
+            {% endif %}
             <h1>Find Trails Near You</h1>
             <h4>Enter Zip Code:</h4>
             <div class="input-group mb-3">
