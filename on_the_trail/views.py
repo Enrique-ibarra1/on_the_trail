@@ -73,7 +73,7 @@ def user_profile(request, user_id):
     cont = json.loads(r.decode('utf-8'))
     context = {
         "user": user,
-        "trails": cont['trails'],
+        "trails": cont['trails']
     }
     return render(request, 'user.html', context)
 
