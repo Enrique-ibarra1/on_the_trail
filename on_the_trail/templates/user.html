@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Your Favorites</title>
+    {% load static %}
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <nav class="navbar navbar-expand-sm bg-light navbar-light">
@@ -22,14 +24,50 @@
             <li><a href="/user_profile/{{request.session.user_id}}"><p style="margin: 8px 10px 8px 20px; color: inherit;">Hello {{request.session.first_name}}</p></a></li>
             <li style="margin: 8px 10px 8px 20px; color: inherit;"><a href="/login_registration/user/logout" >Logout</a></li>
             {% endif %}
+            <li>
+                <form action="/search_trail" method="GET">
+                    <input class="form-control" type="text" name="location" placeholder="Search your area" >
+                    <!-- <button type="submit" class="btn btn-outline-Dark" style="margin: 5px">Go</button> -->
+                </form>
+            </li>
         </ul>
     </nav>
 
-    <h1>Hello {{user.first_name}}</h1>
-    {% for trail in trails %}
-        {{trail.name}}
-    {% endfor %}
+    <h1 style="color: rgb(172, 155, 123);">Your Favorite Trails:</h1>
+    <div class="card-deck">
+        {% for trail in trails %}
+        <div class="card">
+            {% if trail.imgSmall %}
+            <img src="{{trail.imgSmall}}" class="card-img-top" alt="no image">
+            {% else %}
+            <img src="{% static 'images/default.jpg' %}" class="card-img-top">
+            {% endif %}
+            <div class="card-body">
+                <a href="/trail_profile/{{trail.id}}">
+                    <h5 class="card-title">{{trail.name}}</h5>
+                </a>
+                <h6 class="card-title">{{trail.location}}</h6>
+                <p class="card-text">{{trail.summary}}</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Trail Difficulty: 
+                    {% with 'images/'|add:trail.difficulty|add:'.png' as image_static %}
+                    <img width="16" src="{% static image_static %}"/>
+                    {% endwith %}
+                </small><br>
 
+                <small class="text-muted">Trail Rating: {{trail.stars}} out of 5</small>
+                <!-- <form action="/favorite_trail" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="trail_id" value="{{trail.id}}">
+                    <input type="hidden" name="location" value="{{location}}">
+                    <input type="hidden" name="user" value="{{request.session.user_id}}">
+                    <button type="submit">Favorite</button>
+                </form> -->
+            </div>
+        </div>
+        {% endfor %}
+    </div>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>

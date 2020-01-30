@@ -13,7 +13,7 @@
 
 <body>
     <div class="container">
-        <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <nav class="navbar navbar-expand-sm bg-light navbar-light" style="margin-bottom: 10px;">
             <ul class="navbar-nav">
                 {% if not request.session.user_id %}
                 <li class="nav-item active">
@@ -27,8 +27,15 @@
                 <li><a href="user_profile/{{request.session.user_id}}"><p style="margin: 8px 10px 8px 20px; color: inherit;">Hello {{request.session.first_name}}</p></a></li>
                 <li style="margin: 8px 10px 8px 20px; color: inherit;"><a href="/login_registration/user/logout" >Logout</a></li>
                 {% endif %}
+                <li>
+                    <form action="search_trail" method="GET">
+                        <input class="form-control" type="text" name="location" placeholder="Search your area" >
+                        <!-- <button type="submit" class="btn btn-outline-Dark" style="margin: 5px">Go</button> -->
+                    </form>
+                </li>
             </ul>
         </nav>
+        <h1>Search Results:</h1>
         <div class="card-deck">
             {% for trail in cont %}
             <div class="card">
@@ -49,7 +56,7 @@
                         {% with 'images/'|add:trail.difficulty|add:'.png' as image_static %}
                         <img width="16" src="{% static image_static %}"/>
                         {% endwith %}
-                        </small><br>
+                    </small><br>
 
                     <small class="text-muted">Trail Rating: {{trail.stars}} out of 5</small>
                     <form action="favorite_trail" method="POST">

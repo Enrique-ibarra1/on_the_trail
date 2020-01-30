@@ -23,17 +23,21 @@
                 <a class="nav-link" href="#">About us</a>
             </li>
             {% if request.session.user_id %}
-
-            <li><a href="/user_profile/{{request.session.user_id}}"><p style="margin: 8px 10px 8px 20px; color: inherit;">Hello {{request.session.first_name}}</p></a></li>
-            <li><a href="/login_registration/user/logout" style="margin: 8px 10px 8px 20px; color: inherit;">Logout</a>
+            <li><a href="/user_profile/{{request.session.user_id}}">
+                <p style="margin: 8px 10px 8px 20px; color: inherit;">Hello {{request.session.first_name}}</p></a>
             </li>
-
-            <li><a href="/user_profile/{{request.session.user_id}}"><p style="margin: 8px 10px 8px 20px; color: inherit;">Hello {{request.session.first_name}}</p></a></li>
             <li style="margin: 8px 10px 8px 20px; color: inherit;"><a href="/login_registration/user/logout" >Logout</a></li>
-
+            </li>
+            <li>
+                <form action="search_trail" method="GET">
+                    <input class="form-control" type="text" name="location" placeholder="Search your area" >
+                    <!-- <button type="submit" class="btn btn-outline-Dark" style="margin: 5px">Go</button> -->
+                </form>
+            </li>
             {% endif %}
         </ul>
     </nav>
+
     <div class="card text-center" style="width: 50rem; margin: 0 auto; box-shadow: 2px 5px 10px rgb(1, 78, 40)">
         {% for trail in cont %}
 
@@ -50,15 +54,12 @@
         <ul class="list-group list-group-flush text-left">
             <li class="list-group-item"><b>Location:</b> {{trail.location}}</li>
             <li class="list-group-item"><b>Trail Length:</b> {{trail.length}} Miles</li>
-
             <li class="list-group-item"><b>Trail Difficulty:</b>
                 <img src="{% static 'images/{{trail.difficulty}}.png'  %} " alt="{{trail.difficulty}}">
-
             </li>
 
             <li class="list-group-item"><b>Rating:</b> {{trail.stars}} out of 5</li>
-            <li class="list-group-item"><b>Latitude:</b> {{trail.latitude}}<br> <b>Longitude:</b> {{trail.longitude}}
-            </li>
+            <li class="list-group-item"><b>Latitude:</b> {{trail.latitude}}<br> <b>Longitude:</b> {{trail.longitude}}</li>
             <li class="list-group-item"><b>Ascent:</b> {{trail.ascent}}<br><b>Descent:</b> {{trail.descent}}</li>
             <li class="list-group-item"><b>{{trail.conditionStatus}}:</b><br> {{trail.conditionDetails}}</li>
         </ul>
