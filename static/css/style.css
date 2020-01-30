@@ -42,6 +42,8 @@ body{
     padding: 0px;
 }
 
+
+
 .card-deck .card{
     box-shadow: 2px 5px 10px rgb(1, 78, 40);
     min-width: 27%;
@@ -65,4 +67,17 @@ body{
 
 .card-columns {
     column-count: 3;
-    }
+}
+
+a {
+    color: black;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+}
+a:visited {
+    color:black;
+}
+
+a:hover, a:active, a:focus {
+    color: black;
+}
