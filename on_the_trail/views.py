@@ -60,13 +60,13 @@ def favorite_trail(request):
 def user_profile(request, user_id):
     user = User.objects.get(id= user_id)
     user_trails = User.objects.get(id=user_id).favorite_trails.all()
-    trail_ids = []
+    trail_ids = ""
     for trail in user_trails:
-        trail_ids.append(trail.trail_id)
+        trail_ids = trail_ids + str(trail.trail_id) + ","
     print(trail_ids)
 
     token = "200676508-c12a355611c571567c0ce3a8469cbf2d"
-    url = f"https://www.hikingproject.com/data/get-trails-by-id?ids=7001635&key={token}"
+    url = f"https://www.hikingproject.com/data/get-trails-by-id?ids={trail_ids}&key={token}"
 
     req = urllib.request.Request(url)
     r = urllib.request.urlopen(req).read()
