@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Park Profile Page</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light" style="margin: 10px;">
+        <ul class="navbar-nav">
+            {% if not request.session.user_id %}
+            <li class="nav-item active">
+                <a class="nav-link" href="/login_registration">Log in and Registration</a>
+            </li>
+            {%endif%}
+            <li class="nav-item">
+                <a class="nav-link" href="#">About us</a>
+            </li>
+            {% if request.session.user_id %}
+            <li>
+                <p style="margin: 8px 10px 8px 20px;">Hello {{request.session.first_name}}</p>
+            </li>
+            <li><a href="/login_registration/user/logout"
+                    style="margin: 8px 10px 8px 20px; color: inherit;">Logout</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <div class="card text-center" style="width: 50rem; margin: 0 auto; box-shadow: 2px 5px 10px rgb(1, 78, 40)">
+        {% for trail in cont %}
+
+        {% if trail.imgMedium %}
+        <img class="card-img" src="{{trail.imgMedium}}" alt="No Image">
+        {% else %}
+        <img src="{% static 'images/default.jpg' %}">
+        {% endif %}
+
+        <div class="p-3 mb-2 bg-dark text-white text-left">
+            <h5 class="card-title">{{trail.name}}</h5>
+            <p class="card-text">{{trail.summary}}</p>
+        </div>
+        <ul class="list-group list-group-flush text-left">
+            <li class="list-group-item"><b>Location:</b> {{trail.location}}</li>
+            <li class="list-group-item"><b>Trail Length:</b> {{trail.length}} Miles</li>
+            <li class="list-group-item"><b>Trail Difficulty:</b> {{trail.difficulty}}</li>
+            <li class="list-group-item"><b>Rating:</b> {{trail.stars}} out of 5</li>
+            <li class="list-group-item"><b>Latitude:</b> {{trail.latitude}}<br> <b>Longitude:</b> {{trail.longitude}}</li>
+            <li class="list-group-item"><b>Ascent:</b> {{trail.ascent}}<br><b>Descent:</b> {{trail.descent}}</li>
+            <li class="list-group-item"><b>{{trail.conditionStatus}}:</b><br> {{trail.conditionDetails}}</li>
+        </ul>
+        {% endfor %}
+    </div>
+
+
+
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+
+</html>
