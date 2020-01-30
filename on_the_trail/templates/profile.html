@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm bg-light navbar-light" style="margin: 10px;">
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
         <ul class="navbar-nav">
             {% if not request.session.user_id %}
             <li class="nav-item active">
@@ -23,15 +23,11 @@
                 <a class="nav-link" href="#">About us</a>
             </li>
             {% if request.session.user_id %}
-            <li>
-                <p style="margin: 8px 10px 8px 20px;">Hello {{request.session.first_name}}</p>
-            </li>
-            <li><a href="/login_registration/user/logout"
-                    style="margin: 8px 10px 8px 20px; color: inherit;">Logout</a></li>
+            <li><a href="/user_profile/{{request.session.user_id}}"><p style="margin: 8px 10px 8px 20px; color: inherit;">Hello {{request.session.first_name}}</p></a></li>
+            <li style="margin: 8px 10px 8px 20px; color: inherit;"><a href="/login_registration/user/logout" >Logout</a></li>
             {% endif %}
         </ul>
     </nav>
-
     <div class="card text-center" style="width: 50rem; margin: 0 auto; box-shadow: 2px 5px 10px rgb(1, 78, 40)">
         {% for trail in cont %}
 

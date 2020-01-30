@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Your Favorites</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 <body>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <ul class="navbar-nav">
+            {% if not request.session.user_id %}
+            <li class="nav-item active">
+                <a class="nav-link" href="/login_registration">Log in and Registration</a>
+            </li>
+            {%endif%}
+            <li class="nav-item">
+                <a class="nav-link" href="#">About us</a>
+            </li>
+            {% if request.session.user_id %}
+            <li><a href="/user_profile/{{request.session.user_id}}"><p style="margin: 8px 10px 8px 20px; color: inherit;">Hello {{request.session.first_name}}</p></a></li>
+            <li style="margin: 8px 10px 8px 20px; color: inherit;"><a href="/login_registration/user/logout" >Logout</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
     <h1>Hello {{user.first_name}}</h1>
     {% for trail in trails %}
         {{trail.name}}
     {% endfor %}
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 </html>
