@@ -45,6 +45,13 @@
                 <div class="card-footer">
                     <small class="text-muted">Trail Difficulty: {{trail.difficulty}}</small><br>
                     <small class="text-muted">Trail Rating: {{trail.stars}} out of 5</small>
+                    <form action="favorite_trail" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="trail_id" value="{{trail.id}}">
+                        <input type="hidden" name="location" value="{{location}}">
+                        <input type="hidden" name="user" value="{{request.session.user_id}}">
+                        <button type="submit">Favorite</button>
+                    </form>
                 </div>
             </div>
             {% endfor %}

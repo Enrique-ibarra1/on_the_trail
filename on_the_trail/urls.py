@@ -3,5 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.homepage),
-    path('search_trail', views.search_trail)
+    path('search_trail', views.search_trail),
+    path('favorite_trail', views.favorite_trail),
+    path('user_profile/<int:user_id>', views.user_profile)
 ]

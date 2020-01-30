@@ -27,8 +27,8 @@
                     <a class="nav-link" href="#">About us</a>
                 </li>
                 {% if request.session.user_id %}
-                <li><p style="margin: 8px 10px 8px 20px;">Hello {{request.session.first_name}}</p></li>
-                <li><a href="/login_registration/user/logout" style="margin: 8px 10px 8px 20px; color: inherit;">Logout</a></li>
+                <li><a href="user_profile/{{request.session.user_id}}"><p style="margin: 8px 10px 8px 20px; color: inherit;">Hello {{request.session.first_name}}</p></a></li>
+                <li style="margin: 8px 10px 8px 20px; color: inherit;"><a href="/login_registration/user/logout" >Logout</a></li>
                 {% endif %}
             </ul>
         </nav>
@@ -46,8 +46,7 @@
             <h1>Find Trails Near You</h1>
             <h4>Enter Zip Code:</h4>
             <div class="input-group mb-3">
-                <form action="search_trail" method="POST">
-                    {% csrf_token %}
+                <form action="search_trail" method="GET">
                     <input class="form-control" type="text" name="location" placeholder="Search..." style="margin: 15px">
                     <button type="submit" class="btn btn-outline-light" style="margin: 5px">Go</button>
                 </form>
