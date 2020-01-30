@@ -30,3 +30,14 @@ def search_trail(request):
         }
 
     return render(request, 'results.html', context)
+
+def trail_profile(request, trail_id):
+    token = "200676508-c12a355611c571567c0ce3a8469cbf2d"
+    url = f'https://www.hikingproject.com/data/get-trails-by-id?ids={trail_id}&key={token}'
+    req = urllib.request.Request(url)
+    r = urllib.request.urlopen(req).read()
+    cont = json.loads(r.decode('utf-8'))
+    context = {
+        "cont": cont['trails']
+    }
+    return render(request, 'profile.html', context)

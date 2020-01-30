@@ -24,8 +24,11 @@
                     <a class="nav-link" href="#">About us</a>
                 </li>
                 {% if request.session.user_id %}
-                <li><p style="margin: 8px 10px 8px 20px;">Hello {{request.session.first_name}}</p></li>
-                <li><a href="/login_registration/user/logout" style="margin: 8px 10px 8px 20px; color: inherit;">Logout</a></li>
+                <li>
+                    <p style="margin: 8px 10px 8px 20px;">Hello {{request.session.first_name}}</p>
+                </li>
+                <li><a href="/login_registration/user/logout"
+                        style="margin: 8px 10px 8px 20px; color: inherit;">Logout</a></li>
                 {% endif %}
             </ul>
         </nav>
@@ -38,7 +41,9 @@
                 <img src="{% static 'images/default.jpg' %}" class="card-img-top">
                 {% endif %}
                 <div class="card-body">
-                    <h5 class="card-title">{{trail.name}}</h5>
+                    <a href="/trail_profile/{{trail.id}}">
+                        <h5 class="card-title">{{trail.name}}</h5>
+                    </a>
                     <h6 class="card-title">{{trail.location}}</h6>
                     <p class="card-text">{{trail.summary}}</p>
                 </div>
