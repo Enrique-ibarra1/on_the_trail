@@ -45,7 +45,12 @@
                     <p class="card-text">{{trail.summary}}</p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">Trail Difficulty: {{trail.difficulty}}</small><br>
+                    <small class="text-muted">Trail Difficulty: 
+                        {% with 'images/'|add:trail.difficulty|add:'.png' as image_static %}
+                        <img width="16" src="{% static image_static %}"/>
+                        {% endwith %}
+                        </small><br>
+
                     <small class="text-muted">Trail Rating: {{trail.stars}} out of 5</small>
                     <form action="favorite_trail" method="POST">
                         {% csrf_token %}
