@@ -26,8 +26,8 @@
             <li>
                 <p style="margin: 8px 10px 8px 20px;">Hello {{request.session.first_name}}</p>
             </li>
-            <li><a href="/login_registration/user/logout"
-                    style="margin: 8px 10px 8px 20px; color: inherit;">Logout</a></li>
+            <li><a href="/login_registration/user/logout" style="margin: 8px 10px 8px 20px; color: inherit;">Logout</a>
+            </li>
             {% endif %}
         </ul>
     </nav>
@@ -48,9 +48,15 @@
         <ul class="list-group list-group-flush text-left">
             <li class="list-group-item"><b>Location:</b> {{trail.location}}</li>
             <li class="list-group-item"><b>Trail Length:</b> {{trail.length}} Miles</li>
-            <li class="list-group-item"><b>Trail Difficulty:</b> {{trail.difficulty}}</li>
+
+            <li class="list-group-item"><b>Trail Difficulty:</b>
+                <img src="{% static 'images/{{trail.difficulty}}.png'  %} " alt="{{trail.difficulty}}">
+
+            </li>
+
             <li class="list-group-item"><b>Rating:</b> {{trail.stars}} out of 5</li>
-            <li class="list-group-item"><b>Latitude:</b> {{trail.latitude}}<br> <b>Longitude:</b> {{trail.longitude}}</li>
+            <li class="list-group-item"><b>Latitude:</b> {{trail.latitude}}<br> <b>Longitude:</b> {{trail.longitude}}
+            </li>
             <li class="list-group-item"><b>Ascent:</b> {{trail.ascent}}<br><b>Descent:</b> {{trail.descent}}</li>
             <li class="list-group-item"><b>{{trail.conditionStatus}}:</b><br> {{trail.conditionDetails}}</li>
         </ul>
