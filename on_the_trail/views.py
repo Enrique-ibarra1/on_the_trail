@@ -10,7 +10,7 @@ def homepage(request):
     return render(request, 'home.html')
 
 def search_trail(request):
-    geolocator = Nominatim()
+    geolocator = Nominatim(timeout = 100)
     location = geolocator.geocode(request.GET['location'])
     if location is None:
         messages.error(request, "Enter a valid location")
@@ -20,7 +20,7 @@ def search_trail(request):
         longitude = location.longitude
         token = "200676508-c12a355611c571567c0ce3a8469cbf2d"
         # url = f"https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key={token}"
-        url = f"https://www.hikingproject.com/data/get-trails?lat={latitude}&lon={longitude}&maxDistance=50&maxResults=5&key={token}"
+        url = f"https://www.hikingproject.com/data/get-trails?lat={latitude}&lon={longitude}&maxDistance=50&maxResults=15&key={token}"
         req = urllib.request.Request(url)
 
         ##parsing response

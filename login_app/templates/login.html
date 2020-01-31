@@ -20,26 +20,26 @@
         </div>
 
         <div id="container">
-            <div class="row">
-                <div class="col-sm-4">
+            <div class="row" >
+                <div class="col-sm-4" style="margin-top: 30px;">
                     <h1 class="display-4">Register</h1>
                     <form action="/login_registration/user/register" method="POST">
                         {% csrf_token %}
-                        <label for="first_name">First Name:</label>
+                        <!-- <label for="first_name">First Name:</label> -->
                         <input type="text" class="form-control" placeholder="First Name" name="first_name">
-                        <label for="last_name">Last Name:</label>
+                        <!-- <label for="last_name">Last Name:</label> -->
                         <input type="text" class="form-control" placeholder="Last Name" name="last_name">
-                        <label for="email">Email address:</label>
+                        <!-- <label for="email">Email address:</label> -->
                         <input type="email" class="form-control" placeholder="Enter email" name="email">
-                        <label for="password">Password:</label>
+                        <!-- <label for="password">Password:</label> -->
                         <input type="password" class="form-control" placeholder="Password" name="password">
-                        <label for="confirm_password">Confirm Password</label>
+                        <!-- <label for="confirm_password">Confirm Password</label> -->
                         <input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password">
                         <button type="submit" class="btn btn-outline-light">Submit</button>
                     </form>
                 </div>
                 <!-- empty space sorry  -->
-                <div class="col-sm-4">
+                <div class="col-sm-4" style="margin-top: 30px;">
                     <div class="container">
                         {% if messages %}
                             {% for message in messages %}
@@ -49,7 +49,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-sm-4" style="margin-top: 30px;">
                     <div class="col">
                         <h1 class="display-4">Login</h1>
                         <form action="/login_registration/user/login" method="POST">
