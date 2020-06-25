@@ -5,6 +5,9 @@ from geopy.geocoders import Nominatim
 from django.contrib import messages
 from .models import Trail
 from login_app.models import User
+import os
+from dotenv import load_dotenv 
+load_dotenv
 
 def homepage(request):
     return render(request, 'home.html')

@@ -81,4 +81,12 @@ a:hover, a:active, a:focus {
     color: black;
 }
 
+#searchbar{
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+#searchbar:focus{
+    width: 100%;
+}
 
