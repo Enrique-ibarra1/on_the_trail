@@ -7,7 +7,7 @@ from .models import Trail
 from login_app.models import User
 import os
 from dotenv import load_dotenv 
-load_dotenv
+load_dotenv()
 
 def homepage(request):
     return render(request, 'home.html')
@@ -37,7 +37,7 @@ def search_trail(request):
     return render(request, 'results.html', context)
 
 def trail_profile(request, trail_id):
-    token = "200676508-c12a355611c571567c0ce3a8469cbf2d"
+    token = os.getenv('TOKEN')
     url = f'https://www.hikingproject.com/data/get-trails-by-id?ids={trail_id}&key={token}'
     req = urllib.request.Request(url)
     r = urllib.request.urlopen(req).read()
@@ -66,8 +66,7 @@ def user_profile(request, user_id):
     for trail in user_trails:
         trail_ids = trail_ids + str(trail.trail_id) + ","
     print(trail_ids)
-
-    token = "200676508-c12a355611c571567c0ce3a8469cbf2d"
+    token = os.getenv('TOKEN')
     url = f"https://www.hikingproject.com/data/get-trails-by-id?ids={trail_ids}&key={token}"
 
     req = urllib.request.Request(url)
